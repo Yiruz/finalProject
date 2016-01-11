@@ -1,6 +1,4 @@
 PImage rock, hero;
-//final int sWidth = 750;
-//final int sHeight = 500;
 float xPos, yPos;
 float speed;
 boolean moveLeft, moveRight, moveUp, moveDown;
@@ -20,11 +18,11 @@ public void setup(){
 public void draw(){
   background(65,188,55);
   rect(200,50,width-250,height-100);
-  rect(width-50,height/2-35,50,100);
+  rect(width-50,height/2-50,50,100);
   ellipse(200,height/2,380,height-100);
   rect(200,height-50,100,50);
   fill(255,222,173);
-  //image(rock,100,50,40,30);
+  imageMode(CENTER);
   image(hero,xPos,yPos,30,30);
   
     if(moveLeft) xPos -= speed;
@@ -33,9 +31,22 @@ public void draw(){
     if(moveDown) yPos += speed;
     
     if(boundary()){
-      moveUp = false;
-      moveRight = false;
-      moveDown = false;
+      if(keyCode == LEFT){
+        moveLeft = false;
+        xPos += speed;
+      }
+      if(keyCode == RIGHT){
+        moveRight = false;
+        xPos -= speed;
+      }
+      if(keyCode == UP){
+        moveUp = false;
+        yPos += speed;
+      }
+      if(keyCode == DOWN){
+        moveDown = false;
+        yPos -= speed;
+      }
     }
 }
 
@@ -68,7 +79,7 @@ void keyReleased() {
 }
 
 boolean boundary(){
-  if(xPos >= width-65 && (yPos <= height/2-50 || yPos >= height/2+50)){
+  if(xPos >= width-50 && (yPos <= height/2-50 || yPos >= height/2+50)){
     return true;
   }
   return false;
