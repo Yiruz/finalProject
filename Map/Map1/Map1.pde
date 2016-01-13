@@ -44,20 +44,20 @@ void draw(){
     
     if(boundary()){
       if(keyCode == LEFT){
+       xPos += speed;
         moveLeft = false;
-        xPos += speed;
       }
       if(keyCode == RIGHT){
-        moveRight = false;
         xPos -= speed;
+        moveRight = false;
       }
       if(keyCode == UP){
+       yPos += speed;
         moveUp = false;
-        yPos += speed;
       }
       if(keyCode == DOWN){
-        moveDown = false;
         yPos -= speed;
+        moveDown = false;
       }
     }
 }
