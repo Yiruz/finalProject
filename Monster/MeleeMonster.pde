@@ -1,0 +1,2 @@
+class MeleeMonster extends Monster{
+}
