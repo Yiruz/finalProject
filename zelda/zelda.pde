@@ -5,11 +5,11 @@
   float yPos;
   float speed;  
   boolean moveLeft, moveRight, moveUp, moveDown;
-  //hero specs
-  int health;
-  int lives;
-  boolean weapon, attack;
+  ArrayList bows = new ArrayList();
   
+  boolean weapon, attack;
+  int health;
+
   void setup(){
     size(640, 640);
     smooth();
@@ -23,6 +23,8 @@
     weapon = false;
     attack = false;
     health = 100;
+    //bows
+    bows = new ArrayList();
     // The image file must be in the data folder of the current sketch to load
     img = loadImage("zelda.gif");  // Load the image into the program  
   }
@@ -54,6 +56,9 @@ void keyPressed() {
        moveDown = true;
      }
   }
+  if(key == 'A' || key == 'a'){
+      bows.add(new Bows(getC(k), (getC(k)).cX, (getC(k)).cY));
+  }
 }
  
 void keyReleased() {
@@ -70,6 +75,43 @@ void keyReleased() {
   }
 }
 
-void melee(){
+class Hero
+{
+  //hero specs
+  int health;
+  int lives;
+  boolean weapon, attack;
+  PVector v1 = new PVector();
   
+  public Hero(float x, float y){
+      v1.x = x;
+      v1.y = y;
   }
+}
+
+
+class Bows
+{
+  private PVector v1 = new PVector();
+  private Hero h;
+  private int age = 0;
+  PVector center;
+  PVector turret;
+  public Bows(Hero h, float x, float y){
+    this.h = h;
+    v1.x = x;
+    v1.y = y; 
+    center = new PVector(h.v1.x, h.v1.y);
+  }
+  void run(){
+      noStroke();
+      fill(200);
+      ellipse(v1.x, v1.y, 10, 10);
+      PVector vel = PVector.sub(turret, center);
+      v1.add( new PVector(vel.x/15, vel.y/15));
+      age++;
+      if(age > 100){
+         Bows.remove(this);
+      }
+  }
+}
