@@ -5,7 +5,7 @@ class MapEdit{
   final int tileRock = 2;
   final int tileEnd = 3;
   PImage rock;
-  int edit =0;
+  int edit =1;
   int[][]map = new int [50][30];
 
   MapEdit(int x, int y){
@@ -17,7 +17,7 @@ class MapEdit{
     for(int i=0; i<map.length; i++){
       for(int j=0; j<map[i].length; j++){
         fill(0, 255, 0);
-        stroke(4);
+        //stroke(1);
         rect(30*i, 30*j, 30, 30);
         map[i][j] = 1;
       }
@@ -29,7 +29,7 @@ class MapEdit{
     rect(mouseX, mouseY, 30, 30);
   }
   void setGround(){
-    fill(65, 188, 55);
+    fill(198, 160, 32);
     rect(mouseX, mouseY, 30, 30);
   }
   void setRock(){
@@ -50,11 +50,7 @@ class MapEdit{
     }
   }
   
-  void mousePressed(){
-    if(mouseButton == LEFT){
-      setTile();
-    }
-  }
+
   /*void buildObj(){
     if(mousePressed && (mouseButton == LEFT)){
       if(keyPressed){
