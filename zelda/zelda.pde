@@ -6,7 +6,7 @@
   float speed;  
   boolean moveLeft, moveRight, moveUp, moveDown;
   ArrayList bows = new ArrayList();
-  
+  int k = 1;
   boolean weapon, attack;
   int health;
 
@@ -43,7 +43,6 @@
 
   }
 
-
 void keyPressed() {
   if (key == CODED) {
      if (keyCode == LEFT) {
@@ -57,7 +56,7 @@ void keyPressed() {
      }
   }
   if(key == 'A' || key == 'a'){
-      bows.add(new Bows(getC(k), (getC(k)).cX, (getC(k)).cY));
+     bows.add(new Bows(getC(k), (getC(k)).cX, (getC(k)).cY));
   }
 }
  
@@ -71,8 +70,15 @@ void keyReleased() {
        moveUp = false;
      } else if(keyCode == DOWN) {
        moveDown = false;
-     }
+     } 
   }
+}
+public Bows getC(int index)
+{
+  if (index<bows.size())
+    return ((Bows)bows.get(index));
+  else
+    return null;
 }
 
 class Hero
@@ -103,6 +109,36 @@ class Bows
     v1.y = y; 
     center = new PVector(h.v1.x, h.v1.y);
   }
+  void keyPressed() {
+  if (key == CODED) {
+     if (keyCode == LEFT) {
+       moveLeft = true;
+     } else if(keyCode == RIGHT) {
+       moveRight = true;
+     } else if(keyCode == UP) {
+       moveUp = true;
+     } else if(keyCode == DOWN) {
+       moveDown = true;
+     }
+  }
+  if(key == 'A' || key == 'a'){
+     bows.add(new Bows(getC(k), (getC(k)).cX, (getC(k)).cY));
+  }
+}
+ 
+void keyReleased() {
+  if (key == CODED) {
+     if (keyCode == LEFT) {
+       moveLeft = false;
+     } else if(keyCode == RIGHT) {
+       moveRight = false;
+     } else if(keyCode == UP) {
+       moveUp = false;
+     } else if(keyCode == DOWN) {
+       moveDown = false;
+     } 
+  }
+}
   void run(){
       noStroke();
       fill(200);
@@ -111,7 +147,16 @@ class Bows
       v1.add( new PVector(vel.x/15, vel.y/15));
       age++;
       if(age > 100){
-         Bows.remove(this);
+     //    Bows.remove(this);
       }
+  }
+  private float r = 90;
+  float cX;
+  float cY;
+  private float angle;
+  void show(){    smooth();
+    float angle = atan2(mouseY-v1.y,mouseX-v1.x);
+     cX = (r * cos(angle)) + v1.x;
+     cY = (r * sin(angle)) + v1.y;
   }
 }
