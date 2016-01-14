@@ -1,20 +1,20 @@
 MapEdit mapEdit;
+PGraphics tile;
 
 void setup(){
   size(750,500);
-<<<<<<< HEAD:Collison/Collison.pde
-  mapEdit = new MapEdit(10,10);
+  noStroke();
+  mapEdit = new MapEdit(30, 30);
+  tile = createGraphics(30, 30);
+  //mapEdit.rend();
 }
 
 void draw(){
 
 }
-=======
-  grid = new Cell[row][col];
-  for(int i=0; i<row ; i++){
-    for(int j=0; j<row[i]; j++){
-      grid[i][j] = new Cell();
-    }
+
+void mousePressed(){
+  if(mouseButton == LEFT){
+    mapEdit.setTile();
   }
 }
->>>>>>> 7f75bd7b1e69cb1ac680598da55f587fce5c7316:levelEditor/levelEditor.pde
