@@ -9,10 +9,10 @@ void setup(){
 
 void draw(){
   background(0);
-  if(Monster.getMoveLeft()) Monster.setXpos(xpos - speed);
-  if(Monster.getMoveRight()) xpos += speed;
-  if(Monster.getMoveUp()) ypos -= speed;
-  if(Monster.getMoveDown()) ypos += speed;
+  if(m.getMoveLeft()) m.setXpos(m.getXpos() - m.getSpeed());
+  if(m.getMoveRight()) xpos += speed;
+  if(m.getMoveUp()) ypos -= speed;
+  if(m.getMoveDown()) ypos += speed;
   image(img, xpos, ypos, 30, 30);
 }
 

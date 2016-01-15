@@ -19,8 +19,25 @@ class Monster{
    img = loadImage("enemy1.png");
  }
  
+ float getXpos(){
+   return xpos; 
+ }
+ 
+ float getYpos(){
+   return ypos;
+ }
+ 
  void setXpos(float num){
    xpos = num;
+ }
+ 
+ void setYpos(float num){
+   ypos = num;
+ }
+
+ 
+ int getSpeed(){
+   return speed;
  }
  
  void setMoveLeft(boolean b){
