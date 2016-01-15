@@ -10,22 +10,22 @@ void setup(){
 void draw(){
   background(0);
   if(m.getMoveLeft()) m.setXpos(m.getXpos() - m.getSpeed());
-  if(m.getMoveRight()) xpos += speed;
-  if(m.getMoveUp()) ypos -= speed;
-  if(m.getMoveDown()) ypos += speed;
-  image(img, xpos, ypos, 30, 30);
+  if(m.getMoveRight()) m.setXpos(m.getXpos() + m.getSpeed());
+  if(m.getMoveUp()) m.setYpos(m.getYpos() - m.getSpeed());
+  if(m.getMoveDown()) m.setYpos(m.getYpos() + m.getSpeed());
+  image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
 }
 
 void keyPressed() {
   if (key == CODED) {
      if (keyCode == LEFT) {
-       moveLeft = true;
+       m.setMoveLeft(true);
      } else if(keyCode == RIGHT) {
-       moveRight = true;
+       m.setMoveRight(true);
      } else if(keyCode == UP) {
-       moveUp = true;
+       m.setMoveUp(true);
      } else if(keyCode == DOWN) {
-       moveDown = true;
+       m.setMoveDown(true);
      }
   }
 }
@@ -33,13 +33,13 @@ void keyPressed() {
 void keyReleased() {
   if (key == CODED) {
      if (keyCode == LEFT) {
-       moveLeft = false;
+       m.setMoveLeft(false);
      } else if(keyCode == RIGHT) {
-       moveRight = false;
+       m.setMoveRight(false);
      } else if(keyCode == UP) {
-       moveUp = false;
+       m.setMoveUp(false);
      } else if(keyCode == DOWN) {
-       moveDown = false;
+       m.setMoveDown(false);
      }
   }
 }

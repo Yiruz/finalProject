@@ -72,4 +72,8 @@ class Monster{
  boolean getMoveDown(){
    return moveDown;
  }
+ 
+ PImage getImg(){
+   return img;
+ }
 }
