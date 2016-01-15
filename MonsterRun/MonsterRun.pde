@@ -1,32 +1,18 @@
-int health;
-int speed;
-int strength;
-float attackspeed;
-int range;
-PImage img;
-float xpos, ypos;
-boolean moveLeft, moveRight, moveUp, moveDown;
-  
+Monster m;
+
 void setup(){
   size(650, 650);
   smooth();
   noStroke();
-  xpos = width/4;
-  ypos = height/4;
-  speed = 2;
-  health = 100;
-  strength = 8;
-  attackspeed = 1;
-  range = 2;
-  img = loadImage("enemy1.png");
+  m = new Monster();
 }
 
 void draw(){
   background(0);
-  if(moveLeft) xpos -= speed;
-  if(moveRight) xpos += speed;
-  if(moveUp) ypos -= speed;
-  if(moveDown) ypos += speed;
+  if(Monster.getMoveLeft()) Monster.setXpos(xpos - speed);
+  if(Monster.getMoveRight()) xpos += speed;
+  if(Monster.getMoveUp()) ypos -= speed;
+  if(Monster.getMoveDown()) ypos += speed;
   image(img, xpos, ypos, 30, 30);
 }
 
