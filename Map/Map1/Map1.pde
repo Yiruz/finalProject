@@ -2,9 +2,10 @@ PImage rock, hero;
 float xPos, yPos;
 float speed;
 boolean moveLeft, moveRight, moveUp, moveDown;
+float x, y, w, h;
 
 void setup(){
-  size(750, 500);
+  size(900, 600);
   smooth();
   noStroke();
   xPos = width-30;
@@ -16,33 +17,98 @@ void setup(){
 }
 
 void draw(){
-  background(65,188,55);
-  rect(200,50,width-250,height-100);
-  rect(width-50,height/2-50,50,100);
-  ellipse(200,height/2,380,height-100);
-  rect(215,height-50,100,50);
-  fill(255,222,173);
+  background(255,222,173);
+  //wall
+  //top
+  x=width/2;
+  y=15;
+  w=width;
+  h=30;
+  block();
+  createWall(x, y, w, h);
+  //left
+  x=30;
+  y=height/2;
+  w=60;
+  h=height;
+  createWall(x,y,w,h);
+  block();
+  //left middle bar
+  x=75;
+  y=height/2;
+  w=150;
+  h=60;
+  createWall(x,y,w,h);
+  block();
+  //bottom
+  x=110;
+  y=height-15;
+  w=220;
+  h=30;
+  createWall(x,y,w,h);
+  block();
+  x=600;
+  w=600;
+  createWall(x,y,w,h);
+  block();
+  //right
+  x=width-30;
+  y=height/4-15;
+  w=60;
+  h=height/2-30;
+  createWall(x,y,w,h);
+  block();
+  y=height*3/4+15;
+  createWall(x,y,w,h);
+  block();
+  
+  //rock
+  //1
+  x=205;
+  y=height/4;
+  w=30;
+  h=height/2-60;
+  rockGround(x,y,w,h);
+  block();
+  x=205;
+  y=height*3/4;
+  rockGround(x,y,w,h);
+  block();
+  //2
+  x=375;
+  y=height/2;
+  h=330;
+  rockGround(x,y,w,h);
+  block();
+  //3
+  x=585;
+  y=height/2+30;
+  h=480;
+  rockGround(x,y,w,h);
+  block();
+  //4
+  x=width-135;
+  y=height/2-30;
+  h=480;
+  rockGround(x,y,w,h);
+  block();
+
+  
+  
+  
+  
+  
+    rock();
+
   imageMode(CENTER);
   image(hero,xPos,yPos,30,30);
-  for(int rockPosY=65; rockPosY<height-150; rockPosY+=30){
-    image(rock,550,rockPosY,30,30);
-  }
-  for(int rockPosY=height-65; rockPosY>150;rockPosY-=30){
-      image(rock,400,rockPosY,30,30);
-  }
-  for(int rockPosY=65; rockPosY<height/2-30;rockPosY+=30){
-      image(rock,200,rockPosY,30,30);
-  }
-  for(int rockPosY=height-65; rockPosY>height/2+40;rockPosY-=30){
-    image(rock,200,rockPosY,30,30);
-  }
   
     if(moveLeft) xPos -= speed;
     if(moveRight) xPos += speed;
     if(moveUp) yPos -= speed;
     if(moveDown) yPos += speed;
     
-    if(boundary()){
+    /*if(boundary()){
       if(keyCode == LEFT){
        xPos += speed;
         moveLeft = false;
@@ -59,9 +125,69 @@ void draw(){
         yPos -= speed;
         moveDown = false;
       }
+    }*/
+}
+  void block(){
+    if(collide(xPos, yPos, x, y, w, h)){
+       if(keyCode == LEFT){
+       xPos += speed;
+        moveLeft = false;
+      }
+      if(keyCode == RIGHT){
+        xPos -= speed;
+        moveRight = false;
+      }
+      if(keyCode == UP){
+       yPos += speed;
+        moveUp = false;
+      }
+      if(keyCode == DOWN){
+        yPos -= speed;
+        moveDown = false;
+      }
     }
+  }
+
+void createWall(float x, float y, float w, float h){
+  rectMode(CENTER);
+  fill(0,255,0);
+  rect(x,y,w,h);
+}
+/*void walls(){
+  createWall(0,0,50,height);
+  createWall(0,0,width,50);
+  createWall(0,height-50,225,50);
+  createWall(275,height-50,width-275,50);
+  //rect(
+  //fill(0,255,0);
+}*/
+void rockGround(float x, float y, float w, float h){
+  rectMode(CENTER);
+  fill(198,161,36);
+  rect(x,y,w,h);
 }
 
+void rock(){
+  //1
+  for(int rockPosY=45; rockPosY<height/2-30;rockPosY+=30){
+      image(rock,205,rockPosY,30,30);
+  }
+  for(int rockPosY=height-45; rockPosY>height/2+30;rockPosY-=30){
+    image(rock,205,rockPosY,30,30);
+  }
+  //2
+  for(int rockPosY=height/2-150; rockPosY<=height/2+150;rockPosY+=30){
+    image(rock,375,rockPosY,30,30);
+  }
+  //3
+  for(int rockPosY=height-45; rockPosY>90;rockPosY-=30){
+    image(rock,585,rockPosY,30,30);
+  }
+  //4
+  for(int rockPosY=45; rockPosY<height-90; rockPosY+=30){
+    image(rock,width-135,rockPosY,30,30);
+  }
+}
 void keyPressed(){
     if(key == CODED){
       if (keyCode == LEFT) {
@@ -89,8 +215,13 @@ void keyReleased() {
      }
   }
 }
-
-boolean boundary(){
+boolean collide(float xPos, float yPos, float x, float y, float w, float h){
+  if(xPos+15 >= x-w/2 && xPos-15 <= x+w/2 && yPos+15 >= y-h/2 && yPos-15 <= y+h/2){
+    return true;
+  }
+  return false;
+}
+/*boolean boundary(){
   //right margin
   if(xPos >= width-50 && (yPos <= height/2-50 || yPos >= height/2+50)){
     return true;
@@ -107,4 +238,4 @@ boolean boundary(){
     return true;
   }
   return false;
-}
+}*/
