@@ -3,6 +3,12 @@ float xPos, yPos;
 float speed;
 boolean moveLeft, moveRight, moveUp, moveDown;
 float x, y, w, h;
+Monster m;
+Monster m1;
+Monster m2;
+Monster m3;
+Monster m4;
+Monster m5;
 
 void setup(){
   size(900, 600);
@@ -14,6 +20,27 @@ void setup(){
   moveLeft = moveRight = moveUp = moveDown = false;
   rock = loadImage("rocks.png");
   hero = loadImage("zelda.gif");
+  m = new Monster();
+  m.setXpos(width/1.33);
+  m.setYpos(height/2);
+  m1 = new Monster();
+  m1.setXpos(width/1.85);
+  m1.setYpos(height/2);
+  m2 = new Monster();
+  m2.setXpos(width/3);
+  m2.setYpos(height/2);
+  m3 = new Monster();
+  m3.setXpos(width/2.4);
+  m3.setYpos(height/2);
+  m4 = new Monster();
+  m4.setXpos(width/2.41);
+  m4.setYpos(height/1.15);
+  m5 = new Monster();
+  m5.setXpos(width/1.85);
+  m5.setYpos(height/9);
+
+
+
 }
 
 void draw(){
@@ -92,6 +119,12 @@ void draw(){
   h=480;
   rockGround(x,y,w,h);
   block();
+  image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
+  image(m1.getImg(), m1.getXpos(), m1.getYpos(), 30, 30);
+  image(m2.getImg(), m2.getXpos(), m2.getYpos(), 30, 30);
+  image(m3.getImg(), m3.getXpos(), m3.getYpos(), 30, 30);
+  image(m4.getImg(), m4.getXpos(), m4.getYpos(), 30, 30);
+  image(m5.getImg(), m5.getXpos(), m5.getYpos(), 30, 30);
 
   
   
