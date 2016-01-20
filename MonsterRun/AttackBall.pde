@@ -5,4 +5,8 @@ class AttackBall{
   AttackBall(){
     img = loadImage("ball.png");
   }
+  
+  PImage getImg(){
+    return img;
+  }
 }

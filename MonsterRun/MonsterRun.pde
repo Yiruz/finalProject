@@ -1,4 +1,5 @@
 Monster m;
+AttackBall b;
 PImage Hero;
 float xpos, ypos;
 
@@ -16,6 +17,7 @@ void setup(){
   smooth();
   noStroke();
   m = new Monster();
+  b = new AttackBall();
   Hero = loadImage("Monster.gif");
   xpos = width/2;
   ypos = height/2;
