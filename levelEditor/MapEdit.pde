@@ -4,9 +4,11 @@ class MapEdit{
   final int tileGround = 1;
   final int tileRock = 2;
   final int tileEnd = 3;
+  final int tileStart = 4;
   PImage rock;
   int edit =1;
-  int[][]map = new int [50][30];
+  int[][]map = new int [30][20];
+  PGraphics tileGreen, tileGround, tileRock;
 
   MapEdit(int x, int y){
     this.x = x;
@@ -16,8 +18,8 @@ class MapEdit{
   void rend(){
     for(int i=0; i<map.length; i++){
       for(int j=0; j<map[i].length; j++){
-        fill(0, 255, 0);
-        //stroke(1);
+        //fill(0, 255, 0);
+        stroke(1);
         rect(30*i, 30*j, 30, 30);
         map[i][j] = 1;
       }
@@ -47,21 +49,17 @@ class MapEdit{
       case 2:
         setRock();
         break;
+      
     }
   }
   
 
-  /*void buildObj(){
+  void buildObj(){
+   
     if(mousePressed && (mouseButton == LEFT)){
-      if(keyPressed){
-        if(keyCode == 1){
-          setTile(0);
-        }else if(keyCode == 2){
-          setTile(1);
-        }else if(keyCode == 3){
-      }
+      setTile();
  
     }
-  }*/
+  }
 
 }
