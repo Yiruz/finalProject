@@ -7,11 +7,9 @@ class Ammo
   boolean present;
   int direction;
   Hero myHero;
-  Ammo(float x, float y, float velX, float velY, int dir){
+  Ammo(float x, float y, int dir){
     x = position.x;
     y = position.y;
-    velX = vel.x;
-    velY = vel.y;
     dir = direction;
   }
 
@@ -20,6 +18,7 @@ class Ammo
   position.y += vel.y;  
   }
    void drawAmmo() {
+     myHero = new Hero(myHero.getX(),myHero.getY(),100,3);
     fill(0);
     ellipse(myHero.getX(), myHero.getY(), 10, 10);
   }

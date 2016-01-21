@@ -8,7 +8,7 @@ boolean moveLeft, moveRight, moveUp, moveDown, space;
 boolean weapon, attack;
 int health;
 ArrayList<Ammo> ammo = new ArrayList<Ammo>();
-
+  
 void setup() {
   size(640, 640);
   smooth();
@@ -22,12 +22,16 @@ void setup() {
   // The image file must be in the data folder of the current sketch to load
   // Load the image into the program  
   myHero = new Hero(0,0,100,3);
+  myAmmo = new Ammo(0.0,0.0,0);
 }
 
 void draw() {
   background(255);
   myHero.drawHero();
   myHero.update();
+  if(space){
+    myAmmo.drawAmmo();
+  }
 }
 
 void keyPressed() {
@@ -42,7 +46,7 @@ void keyPressed() {
       moveDown = true;
     }
   }
-  if (keyCode == 'a') {
+  if (keyCode == ' ') {
     space = true;
   }
 }
@@ -59,7 +63,7 @@ void keyReleased() {
       moveDown = false;
     }
   }
-  if (keyCode == 'a') {
+  if (keyCode == ' ') {
     space = false;
   }
 }

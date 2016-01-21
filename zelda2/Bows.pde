@@ -6,9 +6,7 @@ class Bows extends Weapon {
   }
 
   Ammo createAmmo(float X, float Y, int dir) {
-    //if (dir == 0) {
-      Ammo a = new Ammo(X, Y, 0.0, -10.0, dir);
+      Ammo a = new Ammo(X, Y, dir);
       return a;
-    //}
   }
 }
