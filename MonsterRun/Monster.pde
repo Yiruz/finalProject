@@ -76,4 +76,14 @@ class Monster{
  PImage getImg(){
    return img;
  }
+ 
+ void takeDamage(float dmg){
+   health -= dmg;
+ }
+ 
+ boolean isDead(){
+   return health <= 0;
+ }
+
+
 }
