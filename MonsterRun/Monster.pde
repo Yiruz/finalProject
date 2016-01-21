@@ -84,6 +84,10 @@ class Monster{
  boolean isAlive(){
    return health <= 0;
  }
+ 
+ int getRange(){
+   return range;
+ }
 
 
 }
