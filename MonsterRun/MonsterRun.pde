@@ -31,6 +31,12 @@ void draw(){
   if(m.getMoveDown()) m.setYpos(m.getYpos() + m.getSpeed());
   image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
   image(Hero, xpos, ypos, 30, 30);
+  if(m.isDead()){
+    m = new Monster();
+  }
+  if(m.getXpos() == 300){
+    m.takeDamage(100);
+  }
 }
 
 void keyPressed() {
