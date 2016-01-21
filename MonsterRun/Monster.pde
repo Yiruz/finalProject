@@ -81,7 +81,7 @@ class Monster{
    health -= dmg;
  }
  
- boolean isDead(){
+ boolean isAlive(){
    return health <= 0;
  }
 
