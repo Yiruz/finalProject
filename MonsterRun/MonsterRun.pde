@@ -36,6 +36,11 @@ void draw(){
   if(m.getXpos() == 300){
     m.takeDamage(100);
   }
+  if (toAttack()){
+    b.setXpos(m.getXpos() + 10);
+    b.setYpos(m.getYpos() + 10);
+    image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
+  }
   if(m.isDead()){
     clear();
     image(Hero, xpos, ypos, 30, 30);
