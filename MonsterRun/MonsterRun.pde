@@ -1,4 +1,5 @@
 Monster m;
+Monster m1;
 AttackBall b;
 PImage Hero;
 float xpos, ypos;
@@ -21,6 +22,7 @@ void setup(){
   Hero = loadImage("Monster.gif");
   xpos = width/2;
   ypos = height/2;
+  m1 = new Monster();
 }
 
 void draw(){
@@ -31,11 +33,12 @@ void draw(){
   if(m.getMoveDown()) m.setYpos(m.getYpos() + m.getSpeed());
   image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
   image(Hero, xpos, ypos, 30, 30);
-  if(m.isDead()){
-    m = new Monster();
-  }
   if(m.getXpos() == 300){
     m.takeDamage(100);
+  }
+  if(m.isDead()){
+    clear();
+    image(Hero, xpos, ypos, 30, 30);
   }
 }
 
