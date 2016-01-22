@@ -100,4 +100,9 @@ class Map1 extends map {
       image(rock, width-135, rockPosY, 30, 30);
     }
   }
+  void placeHero() {
+    xPos = width-30;
+    yPos = height/2;
+
+  }
 }

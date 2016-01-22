@@ -9,6 +9,7 @@ abstract class map {
   }
   abstract void blockade();
   abstract void rock();
+  abstract void placeHero();
 
   void block() {
     if (collide(xPos, yPos, x, y, w, h)) {
@@ -38,7 +39,7 @@ abstract class map {
   }
   void rockGround(float x, float y, float w, float h) {
     rectMode(CENTER);
-    fill(198, 161, 36);
+    fill(220, 161, 36);
     rect(x, y, w, h);
   }
 

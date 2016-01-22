@@ -1,24 +1,29 @@
 Map1 one;
+Map2 two;
 
 void setup() {
   size(900, 600);
   smooth();
   noStroke();
-  xPos = width-30;
-  yPos = height/2;
   speed = 2;
   moveLeft = moveRight = moveUp = moveDown = false;
   rock = loadImage("rocks.png");
   hero = loadImage("zelda.gif");
   one = new Map1();
+  two = new Map2();
+  //one.placeHero();
+  two.placeHero();
 }
 
 void draw() {
   background(255, 222, 173);
-  one.blockade();
-  one.rock();
+  //one.blockade();
+  //one.rock();
+  two.blockade();
+  two.rock();
   imageMode(CENTER);
   image(hero, xPos, yPos, 30, 30);
+
 
   if (moveLeft) xPos -= speed;
   if (moveRight) xPos += speed;
