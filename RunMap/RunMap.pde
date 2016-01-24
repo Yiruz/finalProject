@@ -15,13 +15,13 @@ void setup() {
   one = new Map1();
   two = new Map2();
   three = new Map3();
-  //one.setup();
-  three.setup();
+  one.setup();
+  //three.setup();
 }
 
 void draw() {
   background(255, 222, 173);
- /* switch(MapNum) {
+ switch(MapNum) {
   case 1:
     one.draw();
     break;
@@ -31,8 +31,7 @@ void draw() {
   case 3:
     three.draw();
     break;
-  }*/
-  three.draw();
+  }
 
   imageMode(CENTER);
   image(hero, xPos, yPos, 30, 30);
