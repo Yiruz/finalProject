@@ -1,5 +1,5 @@
 Map1 one;
-Map2 two;
+int MapNum = 0;
 
 void setup() {
   size(900, 600);
@@ -11,16 +11,26 @@ void setup() {
   hero = loadImage("zelda.gif");
   one = new Map1();
   two = new Map2();
-  //one.placeHero();
-  two.placeHero();
+  one.setup();
+  //two.placeHero();
 }
 
 void draw() {
   background(255, 222, 173);
+  switch(MapNum) {
+  case 0:
+    one.draw();
+    break;
+  case 1:
+    two.draw();
+    break;
+  }
+  //one.display();
   //one.blockade();
   //one.rock();
-  two.blockade();
-  two.rock();
+  //one.goal();
+  //two.blockade();
+  //two.rock();
   imageMode(CENTER);
   image(hero, xPos, yPos, 30, 30);
 

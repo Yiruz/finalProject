@@ -1,6 +1,13 @@
 class Map2 extends map {
   Map2() {
   }
+  void setup(){
+    placeHero();
+  }
+  void draw(){
+    blockade();
+    rock();
+  }
   void blockade() {
     //wall
     //top

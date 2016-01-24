@@ -1,5 +1,17 @@
+Map2 two;
+
 class Map1 extends map {
   Map1() {
+  }
+  void setup(){
+    placeHero();
+  }
+  void draw() {
+  background(255, 222, 173);
+    blockade();
+    rock();
+    goal();
+    restart();
   }
   void blockade() {
     //wall
@@ -103,6 +115,22 @@ class Map1 extends map {
   void placeHero() {
     xPos = width-30;
     yPos = height/2;
-
+  }
+  void goal() {
+    fill(0);
+    x=260;
+    y=height-10;
+    w=75;
+    h=20;
+    rect(x, y, w, h);
+    if (collide(xPos, yPos, x, y, w, h)) {
+      MapNum = 1;
+      two.setup();
+    }
+  }
+  void restart() {
+    if (xPos<0 || xPos>width || yPos<0 || yPos>height) {
+      setup();
+    }
   }
 }
