@@ -1,12 +1,14 @@
 class Map2 extends map {
   Map2() {
   }
-  void setup(){
+  void setup() {
     placeHero();
   }
-  void draw(){
+  void draw() {
     blockade();
     rock();
+    restart();
+    goal();
   }
   void blockade() {
     //wall
@@ -95,24 +97,43 @@ class Map2 extends map {
       image(rock, 205, Ypos, 30, 30);
     }
     //2
-    for(int Ypos=285; Ypos<height-90;Ypos+=30){
+    for (int Ypos=285; Ypos<height-90; Ypos+=30) {
       image(rock, 360, Ypos, 30, 30);
     }
     //3
-    for(int Ypos=105;Ypos<height*3/4-30;Ypos+=30){
+    for (int Ypos=105; Ypos<height*3/4-30; Ypos+=30) {
       image(rock, 510, Ypos, 30, 30);
     }
     //4
-    for(int Ypos=165;Ypos<height*3/4-30;Ypos+=30){
+    for (int Ypos=165; Ypos<height*3/4-30; Ypos+=30) {
       image(rock, width*3/4-15, Ypos, 30, 30);
     }
     //3-4
-    for(int Xpos=540; Xpos<width*3/4;Xpos+=30){
+    for (int Xpos=540; Xpos<width*3/4; Xpos+=30) {
       image(rock, Xpos, height*3/4-45, 30, 30);
     }
   }
   void placeHero() {
     xPos=250;
     yPos=30;
+  }
+  void goal() {
+    fill(0);    
+    x=width-10;
+    y=height/2;
+    w=20;
+    h=60;
+    rect(x, y, w, h);
+    if (collide(xPos, yPos, x, y, w, h)) {
+      textAlign(CENTER);
+      textSize(100);
+      text(s, width/2, height/2, 20);
+      speed =0.1;
+    }
+  }
+  void restart() {
+    if (xPos<0 || xPos>width || yPos<0 || yPos>height) {
+      setup();
+    }
   }
 }

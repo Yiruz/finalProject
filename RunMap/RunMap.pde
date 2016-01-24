@@ -1,5 +1,6 @@
 Map1 one;
 int MapNum = 0;
+String s = "END";
 
 void setup() {
   size(900, 600);

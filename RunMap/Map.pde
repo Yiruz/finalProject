@@ -10,6 +10,8 @@ abstract class map {
   abstract void blockade();
   abstract void rock();
   abstract void placeHero();
+  abstract void goal();
+  abstract void restart();
 
   void block() {
     if (collide(xPos, yPos, x, y, w, h)) {
@@ -49,4 +51,5 @@ abstract class map {
     }
     return false;
   }
+  
 }

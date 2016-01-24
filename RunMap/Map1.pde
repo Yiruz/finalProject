@@ -128,7 +128,7 @@ class Map1 extends map {
       two.setup();
     }
   }
-  void restart() {
+    void restart() {
     if (xPos<0 || xPos>width || yPos<0 || yPos>height) {
       setup();
     }
