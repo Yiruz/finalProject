@@ -18,11 +18,11 @@ void setup() {
   //zelda specs
   weapon = false;
   attack = false;
-  health = 100;
+  health = 100; 
   // The image file must be in the data folder of the current sketch to load
   // Load the image into the program  
   myHero = new Hero(0,0,100,3);
-  myAmmo = new Ammo(0.0,0.0,0);
+  myAmmo = new Ammo(0.0,0.0);
 }
 
 void draw() {
@@ -31,6 +31,7 @@ void draw() {
   myHero.update();
   if(space){
     myAmmo.drawAmmo();
+    myHero.shoot(add ammo);
   }
 }
 

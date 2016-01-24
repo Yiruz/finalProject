@@ -1,25 +1,25 @@
 class Ammo
 {
-  PVector position = new PVector();
+  //PVector position = new PVector();
   //private Hero h;
   //private int age = 0;
-  PVector vel;
+  //PVector vel;
   boolean present;
-  int direction;
+  float x, y, X, Y;
+  int dir;
   Hero myHero;
-  Ammo(float x, float y, int dir){
-    x = position.x;
-    y = position.y;
-    dir = direction;
+  Ammo(float x, float y){
+    this.x = x;
+    this.y = y;
+    //this.dir = dir;
   }
 
     void update() {
-  position.x += vel.x;
-  position.y += vel.y;  
+  x += X;
+  x += Y;  
   }
-   void drawAmmo() {
-     myHero = new Hero(myHero.getX(),myHero.getY(),100,3);
+   void drawAmmo(){
     fill(0);
-    ellipse(myHero.getX(), myHero.getY(), 10, 10);
+    ellipse(x, y, 10, 10);
   }
 }
