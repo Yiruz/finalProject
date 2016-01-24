@@ -32,6 +32,6 @@ class Hero
     return ypos;
   }
   Ammo shoot(Weapon x){
-    return x.createAmmo(xpos, ypos, direction);
+    return x.createAmmo(xpos, ypos);
   }
 }

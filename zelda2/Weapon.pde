@@ -8,5 +8,5 @@ abstract class Weapon{
       this.damage = damage;
       this.speed = speed;
   }
-  abstract Ammo createAmmo(float x, float y, int dir);
+  abstract Ammo createAmmo(float x, float y);
 }
