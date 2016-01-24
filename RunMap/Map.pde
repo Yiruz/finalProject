@@ -34,14 +34,14 @@ abstract class map {
     }
   }
 
-  void createWall(float x, float y, float w, float h) {
+  void createWall() {
     rectMode(CENTER);
     fill(46, 178, 48);
     rect(x, y, w, h);
   }
-  void rockGround(float x, float y, float w, float h) {
+  void rockGround() {
     rectMode(CENTER);
-    fill(220, 161, 36);
+    fill(250, 200, 150);
     rect(x, y, w, h);
   }
 

@@ -17,44 +17,44 @@ class Map2 extends map {
     y=45;
     w=220;
     h=90;
-    createWall(x, y, w, h);
+    createWall();
     block();
     x=600;
     w=600;
-    createWall(x, y, w, h);
+    createWall();
     block();
     //bottom
     x=width/2;
     y=height-45;
     w=width;
-    createWall(x, y, w, h);
+    createWall();
     block();
     //left
     x=15;
     y=height/2;
     w=30;
     h=height;
-    createWall(x, y, w, h);
+    createWall();
     block();
     //right
     x=width-15;
     y=height/4-30;
     w=30;
     h=height/2-60;
-    createWall(x, y, w, h);
+    createWall();
     block();
     y=height*3/4+30;
-    createWall(x, y, w, h);
+    createWall();
     block();
     //to goal
     x=width-30;
     y=height/2-45;
     w=60;
     h=30;
-    createWall(x, y, w, h);
+    createWall();
     block();
     y=height/2+45;
-    createWall(x, y, w, h);
+    createWall();
     block();
 
     //rock
@@ -63,32 +63,32 @@ class Map2 extends map {
     y=height/2;
     w=30;
     h=300;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
     //2
     x=360;
     y=height*3/4-60;
     h=240;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
     //3
     x=width/2+60;
     y=height/2-60;
     h=height/2;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
     //4
     x=width*3/4-15;
     y=height/2-30;
     h=height/2-60;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
     //3-4
     x=585;
     y=405;
     w=width/4-45;
     h=30;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
   }
   void rock() {
@@ -125,10 +125,8 @@ class Map2 extends map {
     h=60;
     rect(x, y, w, h);
     if (collide(xPos, yPos, x, y, w, h)) {
-      textAlign(CENTER);
-      textSize(100);
-      text(s, width/2, height/2, 20);
-      speed =0.1;
+      MapNum = 3;
+      three.setup();
     }
   }
   void restart() {

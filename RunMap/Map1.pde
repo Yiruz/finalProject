@@ -1,5 +1,3 @@
-Map2 two;
-
 class Map1 extends map {
   Map1() {
   }
@@ -21,41 +19,41 @@ class Map1 extends map {
     w=width;
     h=30;
     block();
-    createWall(x, y, w, h);
+    createWall();
     //left
     x=30;
     y=height/2;
     w=60;
     h=height;
-    createWall(x, y, w, h);
+    createWall();
     block();
     //left middle bar
     x=75;
     y=height/2;
     w=150;
     h=60;
-    createWall(x, y, w, h);
+    createWall();
     block();
     //bottom
     x=110;
     y=height-15;
     w=220;
     h=30;
-    createWall(x, y, w, h);
+    createWall();
     block();
     x=600;
     w=600;
-    createWall(x, y, w, h);
+    createWall();
     block();
     //right
     x=width-30;
     y=height/4-15;
     w=60;
     h=height/2-30;
-    createWall(x, y, w, h);
+    createWall();
     block();
     y=height*3/4+15;
-    createWall(x, y, w, h);
+    createWall();
     block();
 
     //rock
@@ -64,29 +62,29 @@ class Map1 extends map {
     y=height/4;
     w=30;
     h=height/2-60;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
     x=205;
     y=height*3/4;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
     //2
     x=375;
     y=height/2;
     h=330;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
     //3
     x=585;
     y=height/2+30;
     h=480;
-    rockGround(x, y, w, h);
+    rockGround();
     block();
     //4
     x=width-135;
     y=height/2-30;
     h=480;
-    rockGround(x, y, w, h);
+    rockGround();
     block();  
 
     rock();
@@ -124,7 +122,7 @@ class Map1 extends map {
     h=20;
     rect(x, y, w, h);
     if (collide(xPos, yPos, x, y, w, h)) {
-      MapNum = 1;
+      MapNum = 2;
       two.setup();
     }
   }
