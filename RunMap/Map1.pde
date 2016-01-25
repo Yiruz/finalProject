@@ -1,15 +1,16 @@
 class Map1 extends map {
   Map1() {
   }
-  void setup(){
+  void setup() {
     placeHero();
   }
   void draw() {
-  background(255, 222, 173);
+    background(255, 222, 173);
     blockade();
     rock();
     goal();
     restart();
+    display();
   }
   void blockade() {
     //wall
@@ -126,7 +127,7 @@ class Map1 extends map {
       two.setup();
     }
   }
-    void restart() {
+  void restart() {
     if (xPos<0 || xPos>width || yPos<0 || yPos>height) {
       setup();
     }

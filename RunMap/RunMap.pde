@@ -9,6 +9,7 @@ Map3 three;
 Map4 four;
 int MapNum = 1;
 String s = "END";
+int lives = 5;
 
 void setup() {
   size(900, 600);
@@ -24,24 +25,27 @@ void setup() {
   two = new Map2();
   three = new Map3();
   four = new Map4();
-  //one.setup();
-  four.setup();
+  one.setup();
+  //four.setup();
 }
 
 void draw() {
   background(255, 222, 173);
-  /*switch(MapNum) {
-   case 1:
-   one.draw();
-   break;
-   case 2:
-   two.draw();
-   break;
-   case 3:
-   three.draw();
-   break;
-   }*/
-  four.draw();
+  switch(MapNum) {
+  case 1:
+    one.draw();
+    break;
+  case 2:
+    two.draw();
+    break;
+  case 3:
+    three.draw();
+    break;
+  case 4:
+    four.draw();
+    break;
+  }
+  //four.draw();
 
   imageMode(CENTER);
   image(hero, xPos, yPos, 30, 30);
