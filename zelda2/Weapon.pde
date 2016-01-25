@@ -2,11 +2,11 @@ abstract class Weapon{
   int damage;
   int speed;
   int ammo;
+  int dir;
   String name;
   
-  Weapon(int damage, int speed){
+  Weapon(int damage){
       this.damage = damage;
-      this.speed = speed;
   }
-  abstract Ammo createAmmo(float x, float y);
+  abstract ArrayList<Ammo> newAmmo(float x, float y, int dir);
 }

@@ -5,21 +5,27 @@ class Ammo
   //private int age = 0;
   //PVector vel;
   boolean present;
-  float x, y, X, Y;
-  int dir;
-  Hero myHero;
-  Ammo(float x, float y){
+  float x, y, vx, vy;
+  float damage;
+  int direction;
+  
+  Ammo(float x, float y, float vx, float vy, int direction, float damage){
     this.x = x;
     this.y = y;
-    //this.dir = dir;
+    this.vx= vx;
+    this.vy = vy;
+    this.direction=direction;
+    this.damage = damage;
   }
 
-    void update() {
-  x += X;
-  x += Y;  
-  }
-   void drawAmmo(){
+  void drawAmmo(){
     fill(0);
-    ellipse(x, y, 10, 10);
+    ellipse(x, y, 3, 10);
   }
+  
+  void update(){
+    x += vx;
+    y += vy;
+  }
+
 }
