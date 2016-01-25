@@ -4,10 +4,10 @@ class AttackBall{
   float xpos;
   float ypos;
   
-  AttackBall(){
+  AttackBall(float x, float y){
     img = loadImage("ball.png");
-    xpos = width / 2;
-    ypos = height / 2;
+    xpos = x;
+    ypos = y;
   }
   
   PImage getImg(){

@@ -5,7 +5,7 @@ PImage Hero;
 float xpos, ypos;
 
 boolean toAttack(){
-  if((sqrt((pow(m.getYpos() - ypos, 2)) + (pow(m.getXpos() - xpos, 2)))) <= 50){
+  if((sqrt((pow(m.getYpos() - ypos, 2)) + (pow(m.getXpos() - xpos, 2)))) <= 80){
     return true;
   } else {
     return false;
@@ -18,7 +18,7 @@ void setup(){
   smooth();
   noStroke();
   m = new Monster();
-  b = new AttackBall();
+  b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
   Hero = loadImage("Monster.gif");
   xpos = width/2;
   ypos = height/2;
@@ -37,9 +37,9 @@ void draw(){
     m.takeDamage(100);
   }
   if (toAttack()){
-    b.setXpos(m.getXpos() + 10);
-    b.setYpos(m.getYpos() + 10);
     image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
+    b.setXpos(b.getXpos() + 2);
+    b.setYpos(b.getYpos() + 2);
   }
   if(m.isDead()){
     clear();
