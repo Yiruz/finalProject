@@ -37,9 +37,14 @@ void draw(){
     m.takeDamage(100);
   }
   if (toAttack()){
+    m.setToChase(true);
     image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
     b.setXpos(b.getXpos() + 2);
     b.setYpos(b.getYpos() + 2);
+  }
+  if(m.getToChase()){
+    m.setXpos(m.getXpos() + m.getSpeed());
+    m.setYpos(m.getYpos() + m.getSpeed());
   }
   if(m.isDead()){
     clear();
