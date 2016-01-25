@@ -8,6 +8,8 @@ class Monster{
  float xpos, ypos;
  boolean moveLeft, moveRight, moveUp, moveDown;
  boolean toChase;
+ boolean toCreateBall;
+
  
  Monster(){
    xpos = width/4;
@@ -18,8 +20,16 @@ class Monster{
    attackspeed = 1;
    range = 2;
    img = loadImage("enemy1.png");
+   toCreateBall = true;
  }
  
+ void setToCreateBall(boolean x){
+   toCreateBall = x;
+ }
+ 
+ boolean getToCreateBall(){
+   return toCreateBall;
+ }
  void setToChase(boolean x){
    toChase = x;
  }
