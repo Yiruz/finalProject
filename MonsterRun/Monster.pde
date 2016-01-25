@@ -7,16 +7,25 @@ class Monster{
  PImage img;
  float xpos, ypos;
  boolean moveLeft, moveRight, moveUp, moveDown;
+ boolean toChase;
  
  Monster(){
    xpos = width/4;
    ypos = height/4;
-   speed = 2;
+   speed = 1;
    health = 100;
    strength = 8;
    attackspeed = 1;
    range = 2;
    img = loadImage("enemy1.png");
+ }
+ 
+ void setToChase(boolean x){
+   toChase = x;
+ }
+ 
+ boolean getToChase(){
+   return toChase;
  }
  
  float getXpos(){
