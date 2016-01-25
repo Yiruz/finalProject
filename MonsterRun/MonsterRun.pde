@@ -39,8 +39,18 @@ void draw(){
   if (toAttack()){
     m.setToChase(true);
     image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
-    b.setXpos(b.getXpos() + 2);
-    b.setYpos(b.getYpos() + 2);
+    if(b.getXpos() > xpos + 10){
+      b.setXpos(b.getXpos() - 2);
+    }
+    if(b.getXpos() < xpos + 10){
+      b.setXpos(b.getXpos() + 2);
+    }
+    if(b.getXpos() > ypos + 10){
+      b.setXpos(b.getYpos() - 2);
+    }
+    if(b.getXpos() < ypos + 10){
+      b.setYpos(b.getYpos() + 2);
+    }    
   }
   if(m.getToChase()){
     if(m.getXpos() > xpos){
