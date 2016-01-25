@@ -1,4 +1,4 @@
-
+boolean getKey = false;
 
 class Map4 extends map {
   Map4() {
@@ -11,6 +11,9 @@ class Map4 extends map {
     rock();
     restart();
     goal();
+    display();
+    pickKey();
+    door();
   }
   void blockade() {
     //wall
@@ -75,8 +78,6 @@ class Map4 extends map {
     y=height*3/4;
     rockGround();
     block();
-
-   
   }
   void rock() {
     //1
@@ -116,6 +117,27 @@ class Map4 extends map {
   void restart() {
     if (xPos<0 || xPos>width || yPos<0 || yPos>height) {
       setup();
+    }
+  }
+  void pickKey() {
+    if (collide(xPos, yPos, width-60, 120, 15, 30)) {
+      getKey=true;
+    }
+  }
+
+  void door() {
+    if (getKey == false) {
+      image(keys, width-60, 120, 15, 30);
+      fill(211, 111, 17);
+      x=width-115;
+      y=height/2;
+      w=10;
+      h=90;
+      rect(x, y, w, h);
+      block();
+    } else if (getKey == true) {
+      image(keys, width-60, 120, 0, 0);
+      rect(width-115, height/2, 0, 0);
     }
   }
 }

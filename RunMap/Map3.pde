@@ -9,6 +9,7 @@ class Map3 extends map {
     rock();
     restart();
     goal();
+    display();
   }
   void blockade() {
     //wall
@@ -127,10 +128,8 @@ class Map3 extends map {
     h=60;
     rect(x, y, w, h);
     if (collide(xPos, yPos, x, y, w, h)) {
-      textAlign(CENTER);
-      textSize(100);
-      text(s, width/2, height/2, 20);
-      noLoop();
+      MapNum = 4;
+      four.setup();
     }
   }
   void restart() {

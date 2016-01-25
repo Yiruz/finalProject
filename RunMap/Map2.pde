@@ -9,6 +9,7 @@ class Map2 extends map {
     rock();
     restart();
     goal();
+    display();
   }
   void blockade() {
     //wall
