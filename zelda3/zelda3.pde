@@ -11,6 +11,7 @@ boolean moveLeft, moveRight, moveUp, moveDown, space;
 boolean weapon, attack;
 boolean w1, w2, w3;
 int health;
+int lives;
 int direction;
 int Key = 1;
 ArrayList<Ammo> ammo = new ArrayList<Ammo>();
@@ -19,6 +20,7 @@ PImage rock, hero;
 float xpos;
 float ypos;
 float x, y, w, h;
+boolean gameOver;
 
 //Map Setup
 Map1 one;
@@ -33,12 +35,14 @@ void setup() {
   smooth();
   noStroke();
   //to move
-  speed = 2;
+  speed = 3;
   moveLeft = moveRight = moveUp = moveDown = space = false;
   //zelda specs
   weapon = false;
   attack = false;
   health = 100; 
+  lives = 3;
+  gameOver = false;
   // The image file must be in the data folder of the current sketch to load
   // Load the image into the program  
   myHero = new Hero(width/2,height/2,100,3);
@@ -91,9 +95,20 @@ void draw() {
     //myHero.drawM();
   }
   for(int i = 0; i < ammo.size(); i++){
-    ammo.get(i).drawAmmo();
+    if(direction == 1){
+    ammo.get(i).drawAmmoU();
     ammo.get(i).update();
+    }else if(direction == 2){
+      ammo.get(i).drawAmmoR();
+      ammo.get(i).update();
+    }else if(direction == 3){
+      ammo.get(i).drawAmmoD();
+      ammo.get(i).update();
+    }else{
+      ammo.get(i).drawAmmoL();
+      ammo.get(i).update();
     }
+  }
     for(int i = 0; i < mine.size(); i++){
     mine.get(i).drawMines();
     if(millis() >= timer + 1000 || mapChange){
@@ -104,16 +119,16 @@ void draw() {
 
 void keyPressed() {
   if (key == CODED) {
-    if (keyCode == LEFT) {
+    if (keyCode == LEFT/* && keyCode != RIGHT && keyCode != UP && keyCode != DOWN*/) {
       moveLeft = true;
       direction = 4;
-    } else if (keyCode == RIGHT) {
+    } else if (keyCode == RIGHT /*&& keyCode != LEFT && keyCode != UP && keyCode != DOWN*/) {
       moveRight = true;
       direction = 2;
-    } else if (keyCode == UP) {
+    } else if (keyCode == UP /*&& keyCode != DOWN && keyCode != LEFT && keyCode != RIGHT*/) {
       moveUp = true;
       direction = 1;
-    } else if (keyCode == DOWN) {
+    } else if (keyCode == DOWN /*&& keyCode != UP && keyCode != RIGHT && keyCode != LEFT*/) {
       moveDown = true;
       direction = 3;
     }

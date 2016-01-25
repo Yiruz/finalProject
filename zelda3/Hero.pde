@@ -59,10 +59,10 @@ class Hero
  
 
   void update() {
-    if(moveLeft) xpos -= speed;
-    if(moveRight) xpos += speed;
-    if(moveUp) ypos -= speed;
-    if(moveDown) ypos += speed;
+    if(moveLeft&&!moveRight&&!moveUp&&!moveDown) xpos -= speed;
+    if(moveRight&&!moveLeft&&!moveUp&&!moveDown) xpos += speed;
+    if(moveUp&&!moveDown&&!moveLeft&&!moveRight) ypos -= speed;
+    if(moveDown&&!moveUp&&!moveRight&&!moveLeft) ypos += speed;
   }
   
   public float getX(){
