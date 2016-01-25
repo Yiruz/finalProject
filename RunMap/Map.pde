@@ -1,9 +1,3 @@
-PImage rock, hero;
-float xPos, yPos;
-float speed;
-boolean moveLeft, moveRight, moveUp, moveDown;
-float x, y, w, h;
-
 abstract class map {
   map() {
   }

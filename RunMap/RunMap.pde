@@ -1,6 +1,12 @@
+PImage rock, hero, princess, keys;
+float xPos, yPos;
+float speed;
+boolean moveLeft, moveRight, moveUp, moveDown;
+float x, y, w, h;
 Map1 one;
 Map2 two;
 Map3 three;
+Map4 four;
 int MapNum = 1;
 String s = "END";
 
@@ -12,26 +18,30 @@ void setup() {
   moveLeft = moveRight = moveUp = moveDown = false;
   rock = loadImage("rocks.png");
   hero = loadImage("zelda.gif");
+  princess = loadImage("princess.png");
+  keys = loadImage("KeyMagical3.png");
   one = new Map1();
   two = new Map2();
   three = new Map3();
-  one.setup();
-  //three.setup();
+  four = new Map4();
+  //one.setup();
+  four.setup();
 }
 
 void draw() {
   background(255, 222, 173);
- switch(MapNum) {
-  case 1:
-    one.draw();
-    break;
-  case 2:
-    two.draw();
-    break;
-  case 3:
-    three.draw();
-    break;
-  }
+  /*switch(MapNum) {
+   case 1:
+   one.draw();
+   break;
+   case 2:
+   two.draw();
+   break;
+   case 3:
+   three.draw();
+   break;
+   }*/
+  four.draw();
 
   imageMode(CENTER);
   image(hero, xPos, yPos, 30, 30);
