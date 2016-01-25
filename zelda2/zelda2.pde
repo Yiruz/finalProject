@@ -1,7 +1,7 @@
 Hero myHero;
 Ammo myAmmo;
 Bows myBow;
-Weapon bows = new Bows(20);
+Weapon weaponType = new Bows(20);
 int timer = millis();
 //loading  character
 PImage img; 
@@ -10,7 +10,9 @@ boolean moveLeft, moveRight, moveUp, moveDown, space;
 boolean weapon, attack;
 int health;
 int direction;
+int Key = 1;
 ArrayList<Ammo> ammo = new ArrayList<Ammo>();
+ArrayList<Ammo> mine = new ArrayList<Ammo>(10);
   
 void setup() {
   size(640, 640);
@@ -31,14 +33,20 @@ void draw() {
   background(255);
   myHero.drawHero();
   myHero.update();
-  if(space && millis() >= timer){
-    ammo.addAll(myHero.shoot(bows));
-    timer = millis() + 700;
+  if(space && millis() >= timer && Key == 1){
+    ammo.addAll(myHero.shoot(weaponType));
+    timer = millis() + 350;
+  }else if(space && millis() >= timer && Key == 2){
+    mine.addAll(myHero.shoot(weaponType));
+    timer = millis() + 800;
   }
   for(int i = 0; i < ammo.size(); i++){
     ammo.get(i).drawAmmo();
     ammo.get(i).update();
-  }
+    }
+    for(int i = 0; i < mine.size(); i++){
+    mine.get(i).drawMines();
+    }
 }
 
 void keyPressed() {
@@ -59,6 +67,14 @@ void keyPressed() {
   }
   if (keyCode == ' ') {
     space = true;
+  }
+  if (keyCode == '1'){
+    weaponType = new Bows(20);
+    Key = 1;
+  }
+  if (keyCode == '2'){
+    weaponType = new Mines(30);
+    Key = 2;
   }
 }
 

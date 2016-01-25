@@ -5,8 +5,6 @@ class Bows extends Weapon {
   Bows(int damage) {
     super(damage);
     name = "Bow";
-    //damage = 20;
-    //speed = 2;
   }
 
   ArrayList<Ammo> newAmmo(float X, float Y, int dir) {

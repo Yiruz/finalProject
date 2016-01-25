@@ -8,6 +8,7 @@ class Ammo
   float x, y, vx, vy;
   float damage;
   int direction;
+  PImage bomb;
   
   Ammo(float x, float y, float vx, float vy, int direction, float damage){
     this.x = x;
@@ -21,6 +22,11 @@ class Ammo
   void drawAmmo(){
     fill(0);
     ellipse(x, y, 3, 10);
+  }
+  
+  void drawMines(){
+    bomb = loadImage("bomb.png");
+    image(bomb,x,y,10,10);
   }
   
   void update(){
