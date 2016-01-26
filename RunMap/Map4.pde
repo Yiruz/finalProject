@@ -11,7 +11,6 @@ class Map4 extends map {
     rock();
     restart();
     goal();
-    display();
     pickKey();
     door();
   }
@@ -108,7 +107,7 @@ class Map4 extends map {
     image(princess, x, y, w, h);
     if (collide(xPos, yPos, x, y, w, h)) {
       textAlign(CENTER);
-      textSize(100);
+      textSize(50);
       fill(0);
       text(s, width/2, height/2, 20);
       noLoop();
@@ -134,7 +133,12 @@ class Map4 extends map {
       w=10;
       h=90;
       rect(x, y, w, h);
-      block();
+      if (collide(xPos, yPos, x-3, y, w, h)) {
+        block();
+        fill(0);
+        textSize(20);
+        text("You need to get the key to open the door", 300, 300);
+      }
     } else if (getKey == true) {
       image(keys, width-60, 120, 0, 0);
       rect(width-115, height/2, 0, 0);

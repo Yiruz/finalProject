@@ -1,3 +1,5 @@
+boolean getTriforce = false;
+
 class Map1 extends map {
   Map1() {
   }
@@ -10,7 +12,8 @@ class Map1 extends map {
     rock();
     goal();
     restart();
-    display();
+    takeTriforce();
+    triforce();
   }
   void blockade() {
     //wall
@@ -116,20 +119,41 @@ class Map1 extends map {
     yPos = height/2;
   }
   void goal() {
-    fill(0);
-    x=260;
-    y=height-10;
-    w=75;
-    h=20;
-    rect(x, y, w, h);
-    if (collide(xPos, yPos, x, y, w, h)) {
-      MapNum = 2;
-      two.setup();
+    if (getTriforce == true) {
+      if (collide(xPos, yPos, x, y, w, h)) {
+        MapNum = 2;
+        two.setup();
+      }
+    } else if (getTriforce == false) {
+      fill(0);
+      x=260;
+      y=height-10;
+      w=75;
+      h=20;
+      rect(x, y, w, h);
+      block();
+      if (collide(xPos, yPos, x, y-5, w, h)) {
+        textSize(20);
+        text(exit, 250, 300);
+      }
     }
   }
   void restart() {
     if (xPos<0 || xPos>width || yPos<0 || yPos>height) {
       setup();
+    }
+  }
+
+  void takeTriforce() {
+    if (collide(xPos, yPos, 90, 60, 30, 30)) {
+      getTriforce = true;
+    }
+  }
+  void triforce() {
+    if (getTriforce == false) {
+      image(triforce, 90, 60, 30, 30);
+    } else if (getTriforce == true) {
+      image(triforce, 90, 60, 0, 0);
     }
   }
 }
