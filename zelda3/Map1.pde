@@ -61,10 +61,10 @@ class Map1 extends map {
     if(Key == 1 && space && abs(xpos - m1.getXpos()) <= 2 && abs(ypos - m1.getYpos()) <= 2){
       m1.takeDamage(10);
     }
-    if(Key == 2 && space && abs(ax - m.getXpos()) <= 1 && abs(ay - m.getYpos()) <= 1){
+    if(Key == 2 && abs(ax - m.getXpos()) <= 10 || abs(ay - m.getYpos()) <= 10){
       m.takeDamage(20);
     }
-    if(Key == 2 && space && abs(ax - m1.getXpos()) <= 1 && abs(ay - m1.getYpos()) <= 1){
+    if(Key == 2 && abs(ax - m1.getXpos()) <= 10 || abs(ay - m1.getYpos()) <= 10){
       m1.takeDamage(20);
     }
 
@@ -114,6 +114,9 @@ class Map1 extends map {
     }    
     if(m.isDead()){
       monster.remove(m);
+          textSize(50);
+    fill(0);
+    text("LINK HAS NO MORE LIVES!", width/5, height/2);
     }
   }
     
