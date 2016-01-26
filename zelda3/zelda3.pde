@@ -10,8 +10,8 @@ float speed;
 boolean moveLeft, moveRight, moveUp, moveDown, space;
 boolean weapon, attack;
 boolean w1, w2, w3;
-int health;
-int lives;
+//int health;
+//int lives;
 int direction;
 int Key = 1;
 ArrayList<Ammo> ammo = new ArrayList<Ammo>();
@@ -35,17 +35,17 @@ void setup() {
   smooth();
   noStroke();
   //to move
-  speed = 3;
+  speed = 4;
   moveLeft = moveRight = moveUp = moveDown = space = false;
   //zelda specs
   weapon = false;
   attack = false;
-  health = 100; 
-  lives = 3;
   gameOver = false;
   // The image file must be in the data folder of the current sketch to load
   // Load the image into the program  
   myHero = new Hero(width/2,height/2,100,3);
+  myHero.health = 100; 
+  myHero.lives = 3;
   //Map Elements
   rock = loadImage("rocks.png");
   one = new Map1();
@@ -115,6 +115,11 @@ void draw() {
       mine.remove(i);
       }
     }
+  if(!myHero.isAlive()){
+    textSize(50);
+    fill(0);
+    text("LINK HAS NO MORE LIVES!", width/5, height/2);
+  }
 }
 
 void keyPressed() {

@@ -3,7 +3,7 @@ class Hero
   //hero specs
   int health;
   int lives;
-  boolean weapon, attack;
+  boolean weapon, attack, alive, HP;
   float vx,vy;
 
   
@@ -79,4 +79,29 @@ class Hero
   void takeDamage(int dmg){
     health-=dmg;
   }
+  
+  boolean isAlive(){
+    if (lives <= 0){
+      alive = false;
+    }else{
+      alive = true;
+    }
+    return alive;
+  }
+  
+  boolean isHP(){
+    if (health <= 0){
+      HP = true;
+    }else{
+      HP = false;
+    }
+    return HP;
+  }
+  
+  void loseLive(){
+    if(isHP()){
+    lives--;
+    }
+  }
+  
 }
