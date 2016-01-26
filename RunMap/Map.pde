@@ -50,6 +50,7 @@ abstract class map {
   void display() {
     fill(0);
     textSize(15);
-    text("Lives = "+lives, 20, 15);
+    text("Lives = "+lives, 30, 15);
   }
+
 }
