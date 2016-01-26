@@ -4,7 +4,7 @@ Project Description:
 Our project is a simple, retro version of the Legend of Zelda. The user travels four maps as Link and fights monsters  to save the princess, Zelda.
 
 Directions to Compile/Run:
-Since the project was done in processing, all you have to do is click the play button. The file/game will be called Game.
+Since the project was done in processing, all you have to do is click the play button. The file/game will be called zelda3.
 
 Directions for Use:
 You must collect the Triforce of Wisdom before moving onto the next level. To move, click the arrow keys. The space key is for atacking. 
