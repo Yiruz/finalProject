@@ -1,10 +1,35 @@
 boolean getTriforce = false;
 
 class Map1 extends map {
+  Monster m;
+  Monster m1;
+  Monster m2;
+  Monster m3;
+  Monster m4;
+  Monster m5;
+  AttackBall b;
+  
+
   Map1() {
   }
   void setup() {
     placeHero();
+    m = new Monster();
+    m.setXpos(width/1.33);
+    m.setYpos(height/2);
+    m1 = new Monster();
+    m1.setXpos(width/1.85);
+    m1.setYpos(height/2);
+    m2 = new Monster();
+    m2.setXpos(width/3);
+    m2.setYpos(height/2);
+    m4 = new Monster();
+    m4.setXpos(width/2.41);
+    m4.setYpos(height/1.15);
+    m5 = new Monster();
+    m5.setXpos(width/1.85);
+    m5.setYpos(height/9);
+    b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10); 
   }
   void draw() {
     background(255, 222, 173);
@@ -14,6 +39,61 @@ class Map1 extends map {
     restart();
     takeTriforce();
     triforce();
+    image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
+    image(m1.getImg(), m1.getXpos(), m1.getYpos(), 30, 30);
+    image(m2.getImg(), m2.getXpos(), m2.getYpos(), 30, 30);
+    image(m4.getImg(), m4.getXpos(), m4.getYpos(), 30, 30);
+    image(m5.getImg(), m5.getXpos(), m5.getYpos(), 30, 30);
+    if (m.toAttack(xpos, ypos)){
+      if(m.getToCreateBall()){
+        b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10); 
+        m.setToCreateBall(false);
+      }
+      m.setToChase(true);
+      image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
+      if(b.getXpos() > xpos + 10){
+        b.setXpos(b.getXpos() - 2);
+      }
+      if(b.getXpos() < xpos + 10){
+        b.setXpos(b.getXpos() + 2);
+      }
+      if(b.getYpos() < ypos + 10){
+        b.setYpos(b.getYpos() + 2);
+      }
+      if(b.getYpos() > ypos + 10){
+        b.setYpos(b.getYpos() - 2);
+      }   
+    }
+    if(m.getToChase()){
+      if(m.getXpos() > xpos){
+        m.setXpos(m.getXpos() - m.getSpeed());
+      }
+      if(m.getXpos() < xpos){
+        m.setXpos(m.getXpos() + m.getSpeed());
+      }
+      if(m.getYpos() > ypos){
+        m.setYpos(m.getYpos() - m.getSpeed());
+      }
+      if(m.getYpos() < ypos){
+        m.setYpos(m.getYpos() + m.getSpeed());
+      }
+    }
+    if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
+      clear();
+      background(255, 222, 173);
+      blockade();
+      rock();
+      goal();
+      restart();
+      image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
+      image(m1.getImg(), m1.getXpos(), m1.getYpos(), 30, 30);
+      image(m2.getImg(), m2.getXpos(), m2.getYpos(), 30, 30);
+      image(m4.getImg(), m4.getXpos(), m4.getYpos(), 30, 30);
+      image(m5.getImg(), m5.getXpos(), m5.getYpos(), 30, 30);
+      //Do damage to hero
+      b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
+    }
+
   }
   void blockade() {
     //wall

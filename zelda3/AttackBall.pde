@@ -5,7 +5,7 @@ class AttackBall{
   float ypos;
   
   AttackBall(float x, float y){
-    img = loadImage("ball.png");
+    img = loadImage("Ball.png");
     xpos = x;
     ypos = y;
   }
