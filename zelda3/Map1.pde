@@ -3,14 +3,14 @@ boolean getTriforce = false;
 class Map1 extends map {
   Monster m;
   Monster m1;
-  Monster m2;
-  Monster m4;
-  Monster m5;
+  //Monster m2;
+  //Monster m4;
+  //Monster m5;
   AttackBall b;
   AttackBall b1;
-  AttackBall b2;
-  AttackBall b4;
-  AttackBall b5;
+  //AttackBall b2;
+  //AttackBall b4;
+  //AttackBall b5;
   
 
   Map1() {
@@ -23,20 +23,20 @@ class Map1 extends map {
     m1 = new Monster();
     m1.setXpos(width/1.85);
     m1.setYpos(height/2);
-    m2 = new Monster();
-    m2.setXpos(width/3);
-    m2.setYpos(height/2);
-    m4 = new Monster();
-    m4.setXpos(width/2.41);
-    m4.setYpos(height/1.15);
-    m5 = new Monster();
-    m5.setXpos(width/1.85);
-    m5.setYpos(height/9);
+    //m2 = new Monster();
+    //m2.setXpos(width/3);
+    //m2.setYpos(height/2);
+    //m4 = new Monster();
+    //m4.setXpos(width/2.41);
+    //m4.setYpos(height/1.15);
+    //m5 = new Monster();
+    //m5.setXpos(width/1.85);
+    //m5.setYpos(height/9);
     b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10); 
     b1 = new AttackBall(m1.getXpos() + 10, m1.getYpos() + 10); 
-    b2 = new AttackBall(m2.getXpos() + 10, m2.getYpos() + 10); 
-    b4 = new AttackBall(m4.getXpos() + 10, m4.getYpos() + 10); 
-    b5 = new AttackBall(m5.getXpos() + 10, m5.getYpos() + 10); 
+    //b2 = new AttackBall(m2.getXpos() + 10, m2.getYpos() + 10); 
+    //b4 = new AttackBall(m4.getXpos() + 10, m4.getYpos() + 10); 
+    //b5 = new AttackBall(m5.getXpos() + 10, m5.getYpos() + 10); 
     
   }
   void draw() {
@@ -49,9 +49,9 @@ class Map1 extends map {
     triforce();
     monsterSetup(m, b);
     monsterSetup(m1, b1);
-    monsterSetup(m2, b2);
-    monsterSetup(m4, b4);
-    monsterSetup(m5, b5);
+    //monsterSetup(m2, b2);
+    //monsterSetup(m4, b4);
+    //monsterSetup(m5, b5);
 
 
   }
@@ -93,17 +93,7 @@ class Map1 extends map {
       }
     }
     if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
-      clear();
-      background(255, 222, 173);
-      blockade();
-      rock();
-      goal();
-      restart();
-      image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
-      image(m1.getImg(), m1.getXpos(), m1.getYpos(), 30, 30);
-      image(m2.getImg(), m2.getXpos(), m2.getYpos(), 30, 30);
-      image(m4.getImg(), m4.getXpos(), m4.getYpos(), 30, 30);
-      image(m5.getImg(), m5.getXpos(), m5.getYpos(), 30, 30);
+      b = null;
       //Do damage to hero
       b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
     }    
