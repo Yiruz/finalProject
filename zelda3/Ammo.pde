@@ -50,4 +50,12 @@ class Ammo
     y += vy;
   }
 
+  float getXpos(){
+    return x;
+  }
+  
+  float getYpos(){
+    return y;
+  }
+    
 }

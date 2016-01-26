@@ -1,4 +1,5 @@
 boolean getTriforce = false;
+ArrayList<Monster> monster = new ArrayList<Monster>();
 
 class Map1 extends map {
   Monster m;
@@ -11,6 +12,7 @@ class Map1 extends map {
   //AttackBall b2;
   //AttackBall b4;
   //AttackBall b5;
+  
 
   Map1() {
   }
@@ -22,6 +24,8 @@ class Map1 extends map {
     m1 = new Monster();
     m1.setXpos(width/1.85);
     m1.setYpos(height/2);
+    monster.add(m);
+    monster.add(m1);
     //m2 = new Monster();
     //m2.setXpos(width/3);
     //m2.setYpos(height/2);
@@ -51,18 +55,23 @@ class Map1 extends map {
     //monsterSetup(m2, b2);
     //monsterSetup(m4, b4);
     //monsterSetup(m5, b5);
-  
-  if(myHero.getLives() <= 0){
-    clear();
-    textSize(50);
-    fill(255);
-    text("LINK HAS NO MORE LIVES!", width/6, height/2);
-  }
-
+    if(Key == 1 && space && abs(xpos - m.getXpos()) <= 2 && abs(ypos - m.getYpos()) <= 2){
+      m.takeDamage(10);
+    }
+    if(Key == 1 && space && abs(xpos - m1.getXpos()) <= 2 && abs(ypos - m1.getYpos()) <= 2){
+      m1.takeDamage(10);
+    }
+    if(Key == 2 && space && abs(ax - m.getXpos()) <= 1 && abs(ay - m.getYpos()) <= 1){
+      m.takeDamage(20);
+    }
+    if(Key == 2 && space && abs(ax - m1.getXpos()) <= 1 && abs(ay - m1.getYpos()) <= 1){
+      m1.takeDamage(20);
+    }
 
   }
   
   void monsterSetup(Monster m, AttackBall b){
+    monster.add(m);
     image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
     if (m.toAttack(xpos, ypos)){
       if(m.getToCreateBall()){
@@ -72,16 +81,16 @@ class Map1 extends map {
       m.setToChase(true);
       image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
       if(b.getXpos() > xpos + 10){
-        b.setXpos(b.getXpos() - 1.5);
+        b.setXpos(b.getXpos() - 2);
       }
       if(b.getXpos() < xpos + 10){
-        b.setXpos(b.getXpos() + 1.5);
+        b.setXpos(b.getXpos() + 2);
       }
       if(b.getYpos() < ypos + 10){
-        b.setYpos(b.getYpos() + 1.5);
+        b.setYpos(b.getYpos() + 2);
       }
       if(b.getYpos() > ypos + 10){
-        b.setYpos(b.getYpos() - 1.5);
+        b.setYpos(b.getYpos() - 2);
       }   
     }
     if(m.getToChase()){
@@ -99,10 +108,13 @@ class Map1 extends map {
       }
     }
     if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
-      myHero.takeDamage(5);     
       b = null;
+      //Do damage to hero
       b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
     }    
+    if(m.isDead()){
+      monster.remove(m);
+    }
   }
     
     

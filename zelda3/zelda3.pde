@@ -18,6 +18,8 @@ int direction;
 int Key = 1;
 ArrayList<Ammo> ammo = new ArrayList<Ammo>();
 ArrayList<Ammo> mine = new ArrayList<Ammo>(10);
+float ax; //= myAmmo.getXpos();
+float ay; //= myAmmo.getYpos();
 PImage rock, hero, princess, keys, triforce;
 float xpos;
 float ypos;
@@ -40,7 +42,7 @@ void setup() {
   smooth();
   noStroke();
   //to move
-  speed = 2.5;
+  speed = 3;
   moveLeft = moveRight = moveUp = moveDown = space = false;
   //zelda specs
   weapon = false;
@@ -69,10 +71,8 @@ void setup() {
 } 
 
 void draw() {
-
   //Map Drawing
   background(255, 222, 173);
-  myHero.loseLive();
   switch(MapNum) {
   case 1:
     one.draw();
@@ -101,8 +101,8 @@ void draw() {
   //textAlign(CENTER);
   fill(0);
   textSize(15);
-  text("Lives = "+myHero.getLives(), 60, 15);
-  text("HP = " +myHero.health, 150, 15);
+  text("Lives = "+myHero.lives, 60, 15);
+  text("HP = " + myHero.health, 60, 30);
   //background(255);
   myHero.placeHero();
   myHero.update();
@@ -136,6 +136,11 @@ void draw() {
     if (millis() >= timer + 1000 || mapChange) {
       mine.remove(i);
     }
+  }
+  if(!myHero.isAlive()){
+    textSize(50);
+    fill(0);
+    text("LINK HAS NO MORE LIVES!", width/5, height/2);
   }
 }
 
