@@ -8,7 +8,6 @@ class MapEdit{
   PImage rock;
   int edit =1;
   int[][]map = new int [30][20];
-  PGraphics tileGreen, tileGround, tileRock;
 
   MapEdit(int x, int y){
     this.x = x;

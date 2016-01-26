@@ -18,8 +18,8 @@ void setup(){
   smooth();
   noStroke();
   m = new Monster();
-  b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
   Hero = loadImage("Monster.gif");
+  b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10); 
   xpos = width/2;
   ypos = height/2;
   m1 = new Monster();
@@ -37,19 +37,52 @@ void draw(){
     m.takeDamage(100);
   }
   if (toAttack()){
+    if(m.getToCreateBall()){
+      b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10); 
+      m.setToCreateBall(false);
+    }
     m.setToChase(true);
     image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
-    b.setXpos(b.getXpos() + 2);
-    b.setYpos(b.getYpos() + 2);
+    if(b.getXpos() > xpos + 10){
+      b.setXpos(b.getXpos() - 2);
+    }
+    if(b.getXpos() < xpos + 10){
+      b.setXpos(b.getXpos() + 2);
+    }
+    if(b.getYpos() < ypos + 10){
+      b.setYpos(b.getYpos() + 2);
+    }
+    if(b.getYpos() > ypos + 10){
+      b.setYpos(b.getYpos() - 2);
+    }   
   }
   if(m.getToChase()){
-    m.setXpos(m.getXpos() + m.getSpeed());
-    m.setYpos(m.getYpos() + m.getSpeed());
+    if(m.getXpos() > xpos){
+      m.setXpos(m.getXpos() - m.getSpeed());
+    }
+    if(m.getXpos() < xpos){
+      m.setXpos(m.getXpos() + m.getSpeed());
+    }
+    if(m.getYpos() > ypos){
+      m.setYpos(m.getYpos() - m.getSpeed());
+    }
+    if(m.getYpos() < ypos){
+      m.setYpos(m.getYpos() + m.getSpeed());
+    }
   }
-  if(m.isDead()){
+  if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
     clear();
+    image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
     image(Hero, xpos, ypos, 30, 30);
+    //Do damage to hero
+    //b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
+    b = new AttackBall(250, 250);
   }
+
+  //if(m.isDead()){
+    //clear();
+    //image(Hero, xpos, ypos, 30, 30);
+  //}
 }
 
 void keyPressed() {

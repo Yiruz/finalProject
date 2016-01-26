@@ -1,12 +1,7 @@
-PImage rock, hero;
-float xPos, yPos;
-float speed;
-boolean moveLeft, moveRight, moveUp, moveDown;
-float x, y, w, h;
-
 abstract class map {
   map() {
   }
+
   abstract void blockade();
   abstract void rock();
   abstract void placeHero();
@@ -51,5 +46,6 @@ abstract class map {
     }
     return false;
   }
-  
+
+
 }

@@ -9,6 +9,8 @@ class Map3 extends map {
     rock();
     restart();
     goal();
+    takeTriforce();
+    triforce();
   }
   void blockade() {
     //wall
@@ -120,22 +122,41 @@ class Map3 extends map {
     yPos=height/2;
   }
   void goal() {
-    fill(0);    
-    x=width-10;
-    y=height/2;
-    w=20;
-    h=60;
-    rect(x, y, w, h);
-    if (collide(xPos, yPos, x, y, w, h)) {
-      textAlign(CENTER);
-      textSize(100);
-      text(s, width/2, height/2, 20);
-      noLoop();
+    if (getTriforce == true) {
+      if (collide(xPos, yPos, x, y, w, h)) {
+        MapNum = 4;
+        four.setup();
+      }
+    } else if (getTriforce == false) {
+      fill(0);
+      x=width-10;
+      y=height/2;
+      w=20;
+      h=60;
+      rect(x, y, w, h);
+      block();
+      if (collide(xPos, yPos, x-5, y, w, h)) {
+        textSize(20);
+        text(exit, 250, 300);
+      }
     }
   }
   void restart() {
     if (xPos<0 || xPos>width || yPos<0 || yPos>height) {
       setup();
+    }
+  }
+  
+    void takeTriforce() {
+    if (collide(xPos, yPos, 650, 300, 30, 30)) {
+      getTriforce = true;
+    }
+  }
+  void triforce() {
+    if (getTriforce == false) {
+      image(triforce, 650, 300, 30, 30);
+    } else if (getTriforce == true) {
+      image(triforce, 650, 00, 0, 0);
     }
   }
 }

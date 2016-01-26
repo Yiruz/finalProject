@@ -23,6 +23,14 @@ class Monster{
    toCreateBall = true;
  }
  
+  boolean toAttack(float x, float ypos){ //Hero's coordinates
+    if((sqrt((pow(ypos - y, 2)) + (pow(xpos - x, 2)))) <= 80){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
  void setToCreateBall(boolean x){
    toCreateBall = x;
  }
