@@ -40,7 +40,7 @@ void setup() {
   smooth();
   noStroke();
   //to move
-  speed = 4;
+  speed = 2.5;
   moveLeft = moveRight = moveUp = moveDown = space = false;
   //zelda specs
   weapon = false;
