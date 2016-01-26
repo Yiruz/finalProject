@@ -61,10 +61,10 @@ class Map1 extends map {
     if(Key == 1 && space && abs(xpos - m1.getXpos()) <= 2 && abs(ypos - m1.getYpos()) <= 2){
       m1.takeDamage(10);
     }
-    if(Key == 2 && abs(ax - m.getXpos()) <= 10 || abs(ay - m.getYpos()) <= 10){
+    if(Key == 2 && abs(ax - m.getXpos()) <= 10 && abs(ay - m.getYpos()) <= 10){
       m.takeDamage(20);
     }
-    if(Key == 2 && abs(ax - m1.getXpos()) <= 10 || abs(ay - m1.getYpos()) <= 10){
+    if(Key == 2 && abs(ax - m1.getXpos()) <= 10 && abs(ay - m1.getYpos()) <= 10){
       m1.takeDamage(20);
     }
 
