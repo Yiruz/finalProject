@@ -69,19 +69,21 @@ class Map1 extends map {
     if(Key == 1 && space && abs(xpos - m1.getXpos()) <= 10 && abs(ypos - m1.getYpos()) <= 10){
       m1.takeDamage(10);
     }
-<<<<<<< HEAD
     if(Key == 2 && space && abs(ax - m.getXpos()) <= 10 && abs(ay - m.getYpos()) <= 10){
       m.takeDamage(20);
     }
     if(Key == 2 && space && abs(ax - m1.getXpos()) <= 10 && abs(ay - m1.getYpos()) <= 10){
-=======
     if(Key == 2 && abs(ax - m.getXpos()) <= 10 && abs(ay - m.getYpos()) <= 10){
       m.takeDamage(20);
     }
     if(Key == 2 && abs(ax - m1.getXpos()) <= 10 && abs(ay - m1.getYpos()) <= 10){
->>>>>>> 32595dcf964ce901256bd8ae30935bb861721b43
       m1.takeDamage(20);
+    } else {}
     }
+    
+    
+ 
+    
     
 
   }
@@ -129,7 +131,6 @@ class Map1 extends map {
       b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
     }    
     if(m.isDead()){
-<<<<<<< HEAD
       clear();
       background(255, 222, 173);
       blockade();
@@ -138,13 +139,6 @@ class Map1 extends map {
       restart();
       takeTriforce();
       triforce();
-
-=======
-      monster.remove(m);
-          textSize(50);
-    fill(0);
-    text("LINK HAS NO MORE LIVES!", width/5, height/2);
->>>>>>> 32595dcf964ce901256bd8ae30935bb861721b43
     }
   }
     
