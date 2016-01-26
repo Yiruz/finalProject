@@ -47,10 +47,5 @@ abstract class map {
     return false;
   }
 
-  void display() {
-    fill(0);
-    textSize(15);
-    text("Lives = "+lives, 30, 15);
-  }
 
 }

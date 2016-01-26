@@ -11,7 +11,6 @@ class Map4 extends map {
     rock();
     restart();
     goal();
-    display();
     pickKey();
     door();
   }

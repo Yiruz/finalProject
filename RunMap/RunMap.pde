@@ -27,13 +27,13 @@ void setup() {
   two = new Map2();
   three = new Map3();
   four = new Map4();
-  //one.setup();
-  four.setup();
+  one.setup();
+  //four.setup();
 }
 
 void draw() {
   background(255, 222, 173);
-  /*switch(MapNum) {
+  switch(MapNum) {
    case 1:
    one.draw();
    break;
@@ -46,8 +46,13 @@ void draw() {
    case 4:
    four.draw();
    break;
-   }*/
-  four.draw();
+   }
+  //four.draw();
+
+  textAlign(CENTER);
+  fill(0);
+  textSize(15);
+  text("Lives = "+lives, 60, 15);
 
   imageMode(CENTER);
   image(hero, xPos, yPos, 30, 30);

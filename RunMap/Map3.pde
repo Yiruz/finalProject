@@ -9,7 +9,6 @@ class Map3 extends map {
     rock();
     restart();
     goal();
-    display();
     takeTriforce();
     triforce();
   }

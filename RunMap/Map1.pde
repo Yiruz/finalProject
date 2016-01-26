@@ -12,7 +12,6 @@ class Map1 extends map {
     rock();
     goal();
     restart();
-    display();
     takeTriforce();
     triforce();
   }
