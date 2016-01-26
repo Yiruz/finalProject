@@ -1,6 +1,7 @@
 abstract class map {
   map() {
   }
+
   abstract void blockade();
   abstract void rock();
   abstract void placeHero();
@@ -45,5 +46,4 @@ abstract class map {
     }
     return false;
   }
-  
 }
