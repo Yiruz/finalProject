@@ -1,7 +1,8 @@
 //Hero Setup
 Hero myHero;
-Ammo myAmmo;
+//Ammo myAmmo;
 Bows myBow;
+Ammo myAmmo = new Ammo(0,0,0,0,0,0);
 //Melee myMelee;
 Weapon weaponType = new Bows(20);
 int timer = millis();
@@ -18,8 +19,8 @@ int direction;
 int Key = 1;
 ArrayList<Ammo> ammo = new ArrayList<Ammo>();
 ArrayList<Ammo> mine = new ArrayList<Ammo>(10);
-float ax; //= myAmmo.getXpos();
-float ay; //= myAmmo.getYpos();
+float ax = myAmmo.getXpos();
+float ay = myAmmo.getYpos();
 PImage rock, hero, princess, keys, triforce;
 float xpos;
 float ypos;
