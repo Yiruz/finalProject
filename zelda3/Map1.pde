@@ -11,7 +11,6 @@ class Map1 extends map {
   //AttackBall b2;
   //AttackBall b4;
   //AttackBall b5;
-  
 
   Map1() {
   }
@@ -52,6 +51,13 @@ class Map1 extends map {
     //monsterSetup(m2, b2);
     //monsterSetup(m4, b4);
     //monsterSetup(m5, b5);
+  
+  if(myHero.getLives() <= 0){
+    clear();
+    textSize(50);
+    fill(255);
+    text("LINK HAS NO MORE LIVES!", width/6, height/2);
+  }
 
 
   }
@@ -93,8 +99,8 @@ class Map1 extends map {
       }
     }
     if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
+      myHero.takeDamage(5);     
       b = null;
-      //Do damage to hero
       b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
     }    
   }

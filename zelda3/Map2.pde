@@ -37,6 +37,14 @@ class Map2 extends map {
     monsterSetup(m1, b1);
     //monsterSetup(m2, b2);
     
+    if(myHero.getLives() <= 0){
+      clear();
+      textSize(50);
+      fill(255);
+      text("LINK HAS NO MORE LIVES!", width/6, height/2);
+    }
+
+    
   }
   
   void monsterSetup(Monster m, AttackBall b){
@@ -76,9 +84,9 @@ class Map2 extends map {
       }
     }
     if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
-      b = null;
-      //Do damage to hero
+      myHero.takeDamage(5);      
       b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
+      b = null;
     }    
   } 
   

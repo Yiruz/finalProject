@@ -28,6 +28,14 @@ class Map3 extends map {
     triforce();
     monsterSetup(m, b);
     monsterSetup(m1, b1);
+    
+    if(myHero.getLives() <= 0){
+      clear();
+      textSize(50);
+      fill(255);
+      text("LINK HAS NO MORE LIVES!", width/6, height/2);
+    }
+
   }
   
   
@@ -68,8 +76,8 @@ class Map3 extends map {
       }
     }
     if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
+      myHero.takeDamage(5);      
       b = null;
-      //Do damage to hero
       b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
     }    
   }

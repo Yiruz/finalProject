@@ -79,16 +79,7 @@ class Hero
   void takeDamage(int dmg){
     health-=dmg;
   }
-  
-  boolean isAlive(){
-    if (lives <= 0){
-      alive = false;
-    }else{
-      alive = true;
-    }
-    return alive;
-  }
-  
+    
   boolean isHP(){
     if (health <= 0){
       HP = true;
@@ -100,8 +91,13 @@ class Hero
   
   void loseLive(){
     if(isHP()){
-    lives--;
+      lives--;
+      health += 100;
     }
+  }
+  
+  int getLives(){
+    return lives;
   }
   
 }
