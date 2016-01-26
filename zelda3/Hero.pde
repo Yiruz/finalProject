@@ -100,7 +100,8 @@ class Hero
   
   void loseLive(){
     if(isHP()){
-    lives--;
+      lives--;
+      health += 100;
     }
   }
   

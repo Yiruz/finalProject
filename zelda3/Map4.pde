@@ -1,10 +1,26 @@
 boolean getKey = false;
 
 class Map4 extends map {
+  Monster m;
+  Monster m1;
+  AttackBall b;
+  AttackBall b1;
+  
+  
   Map4() {
   }
   void setup() {
     placeHero();
+    m = new Monster();
+    m.setXpos(width/1.2);
+    m.setYpos(height/2);
+    m1 = new Monster();
+    m1.setXpos(width/1.925);
+    m1.setYpos(height/2);
+    b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10); 
+    b1 = new AttackBall(m1.getXpos() + 10, m1.getYpos() + 10);     
+    
+    
   }
   void draw() {
     blockade();
@@ -13,7 +29,62 @@ class Map4 extends map {
     goal();
     pickKey();
     door();
+    monsterSetup(m, b);
+    monsterSetup(m1, b1);
+    
+    
+    if(myHero.lives <= 0){
+      clear();
+      textSize(50);
+      fill(255);
+      text("LINK HAS NO MORE LIVES!", width/6, height/2);
+    }
   }
+
+  void monsterSetup(Monster m, AttackBall b){
+    image(m.getImg(), m.getXpos(), m.getYpos(), 30, 30);
+    if (m.toAttack(xpos, ypos)){
+      if(m.getToCreateBall()){
+        b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10); 
+        m.setToCreateBall(false);
+      }
+      m.setToChase(true);
+      image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
+      if(b.getXpos() > xpos + 10){
+        b.setXpos(b.getXpos() - 2);
+      }
+      if(b.getXpos() < xpos + 10){
+        b.setXpos(b.getXpos() + 2);
+      }
+      if(b.getYpos() < ypos + 10){
+        b.setYpos(b.getYpos() + 2);
+      }
+      if(b.getYpos() > ypos + 10){
+        b.setYpos(b.getYpos() - 2);
+      }   
+    }
+    if(m.getToChase()){
+      if(m.getXpos() > xpos){
+        m.setXpos(m.getXpos() - m.getSpeed());
+      }
+      if(m.getXpos() < xpos){
+        m.setXpos(m.getXpos() + m.getSpeed());
+      }
+      if(m.getYpos() > ypos){
+        m.setYpos(m.getYpos() - m.getSpeed());
+      }
+      if(m.getYpos() < ypos){
+        m.setYpos(m.getYpos() + m.getSpeed());
+      }
+    }
+    if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
+      myHero.takeDamage(5);
+      b = null;
+      b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
+    }    
+  } 
+
+
   void blockade() {
     //wall
     //top

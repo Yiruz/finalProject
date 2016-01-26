@@ -52,21 +52,30 @@ class Map1 extends map {
     triforce();
     monsterSetup(m, b);
     monsterSetup(m1, b1);
+    
+    if(myHero.lives <= 0){
+      clear();
+      textSize(50);
+      fill(255);
+      text("LINK HAS NO MORE LIVES!", width/6, height/2);
+    }
+
     //monsterSetup(m2, b2);
     //monsterSetup(m4, b4);
     //monsterSetup(m5, b5);
-    if(Key == 1 && space && abs(xpos - m.getXpos()) <= 2 && abs(ypos - m.getYpos()) <= 2){
+    if(Key == 1 && space && abs(xpos - m.getXpos()) <= 10 && abs(ypos - m.getYpos()) <= 10){
       m.takeDamage(10);
     }
-    if(Key == 1 && space && abs(xpos - m1.getXpos()) <= 2 && abs(ypos - m1.getYpos()) <= 2){
+    if(Key == 1 && space && abs(xpos - m1.getXpos()) <= 10 && abs(ypos - m1.getYpos()) <= 10){
       m1.takeDamage(10);
     }
-    if(Key == 2 && space && abs(ax - m.getXpos()) <= 1 && abs(ay - m.getYpos()) <= 1){
+    if(Key == 2 && space && abs(ax - m.getXpos()) <= 10 && abs(ay - m.getYpos()) <= 10){
       m.takeDamage(20);
     }
-    if(Key == 2 && space && abs(ax - m1.getXpos()) <= 1 && abs(ay - m1.getYpos()) <= 1){
+    if(Key == 2 && space && abs(ax - m1.getXpos()) <= 10 && abs(ay - m1.getYpos()) <= 10){
       m1.takeDamage(20);
     }
+    
 
   }
   
@@ -108,12 +117,20 @@ class Map1 extends map {
       }
     }
     if(b.getXpos() < xpos + 20 && b.getXpos() > xpos && b.getYpos() < ypos + 20 && b.getYpos() > ypos){
+      myHero.takeDamage(5);
       b = null;
-      //Do damage to hero
       b = new AttackBall(m.getXpos() + 10, m.getYpos() + 10);
     }    
     if(m.isDead()){
-      monster.remove(m);
+      clear();
+      background(255, 222, 173);
+      blockade();
+      rock();
+      goal();
+      restart();
+      takeTriforce();
+      triforce();
+
     }
   }
     

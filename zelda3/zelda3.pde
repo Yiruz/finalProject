@@ -94,6 +94,8 @@ void draw() {
     w3 = false;
     break;
   }
+  
+  myHero.loseLive();
 
   imageMode(CENTER);
   //image(hero, xpos, ypos, 30, 30);
@@ -136,11 +138,6 @@ void draw() {
     if (millis() >= timer + 1000 || mapChange) {
       mine.remove(i);
     }
-  }
-  if(!myHero.isAlive()){
-    textSize(50);
-    fill(0);
-    text("LINK HAS NO MORE LIVES!", width/5, height/2);
   }
 }
 
