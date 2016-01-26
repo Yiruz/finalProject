@@ -9,15 +9,11 @@ PImage img;
 float speed;  
 boolean moveLeft, moveRight, moveUp, moveDown, space;
 boolean weapon, attack;
-<<<<<<< HEAD
-boolean w1, w2, w3;
 //int health;
 //int lives;
-=======
 boolean w1, w2, w3, w4;
 int health;
 int lives;
->>>>>>> 9fb72473fa561d41c7728b85f99d9eede76ee85c
 int direction;
 int Key = 1;
 ArrayList<Ammo> ammo = new ArrayList<Ammo>();
@@ -52,13 +48,10 @@ void setup() {
   gameOver = false;
   // The image file must be in the data folder of the current sketch to load
   // Load the image into the program  
-<<<<<<< HEAD
   myHero = new Hero(width/2,height/2,100,3);
   myHero.health = 100; 
   myHero.lives = 3;
-=======
   myHero = new Hero(width/2, height/2, 100, 3);
->>>>>>> 9fb72473fa561d41c7728b85f99d9eede76ee85c
   //Map Elements
   princess = loadImage("princess.png");
   keys = loadImage("KeyMagical3.png");
@@ -140,13 +133,11 @@ void draw() {
     if (millis() >= timer + 1000 || mapChange) {
       mine.remove(i);
     }
-<<<<<<< HEAD
   if(!myHero.isAlive()){
     textSize(50);
     fill(0);
     text("LINK HAS NO MORE LIVES!", width/5, height/2);
-=======
->>>>>>> 9fb72473fa561d41c7728b85f99d9eede76ee85c
+  }
   }
 }
 

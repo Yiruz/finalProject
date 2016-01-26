@@ -8,8 +8,8 @@ class Hero
 
   
   Hero(float x, float y, int health, int lives){
-      x = xpos;
-      y = ypos;
+      xpos = x;
+      ypos = y;
       this.health = health;
       this.lives = lives;
       vx = 0;
