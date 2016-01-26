@@ -66,16 +66,16 @@ class Map1 extends map {
       m.setToChase(true);
       image(b.getImg(), b.getXpos(), b.getYpos(), 10, 10);
       if(b.getXpos() > xpos + 10){
-        b.setXpos(b.getXpos() - 1);
+        b.setXpos(b.getXpos() - 1.5);
       }
       if(b.getXpos() < xpos + 10){
-        b.setXpos(b.getXpos() + 1);
+        b.setXpos(b.getXpos() + 1.5);
       }
       if(b.getYpos() < ypos + 10){
-        b.setYpos(b.getYpos() + 1);
+        b.setYpos(b.getYpos() + 1.5);
       }
       if(b.getYpos() > ypos + 10){
-        b.setYpos(b.getYpos() - 1);
+        b.setYpos(b.getYpos() - 1.5);
       }   
     }
     if(m.getToChase()){
